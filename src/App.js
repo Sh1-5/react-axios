@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { PureComponent } from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import request from './service/request'
+
+export default class App extends PureComponent {
+  async componentDidMount() {
+    const res = await request({
+      url: '/login',
+      method: 'post',
+      data: {
+        name: 'coderwhy',
+        password: '123456'
+      }
+    })
+    console.log(res)
+  }
+  render() {
+    return <div>App</div>
+  }
 }
-
-export default App;
